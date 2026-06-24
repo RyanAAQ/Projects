@@ -20,7 +20,7 @@ public class QueueTest {
     }
 
     @Test
-    public void newQueueHasSizeZero() {
+    public void newQueueSizeIsZero() {
         assertEquals(0, queue.size());
     }
 
@@ -31,7 +31,7 @@ public class QueueTest {
     }
 
     @Test
-    public void peekOnEmptyQueueReturnsMinusOne() {
+    public void peekOnAnEmptyQueueReturnsMinusOne() {
         assertEquals(-1, queue.peek());
     }
 
@@ -43,30 +43,30 @@ public class QueueTest {
     }
 
     @Test
-    public void elementOnEmptyQueueThrowsException() {
+    public void elementOnAnEmptyQueueThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> queue.element());
     }
 
     @Test
-    public void elementReturnsHeadWithoutRemoving() {
+    public void elementReturnsFirstWithoutRemovingIt() {
         queue.add(10);
         assertEquals(10, queue.element());
         assertEquals(1, queue.size());
     }
 
     @Test
-    public void removeOnEmptyQueueThrowsException() {
+    public void removeOnAnEmptyQueueThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> queue.remove());
     }
 
     @Test
-    public void removeReturnsHead() {
+    public void removeReturnsFirst() {
         queue.add(7);
         assertEquals(7, queue.remove());
     }
 
     @Test
-    public void removeDeletesHead() {
+    public void removeDeleteFirst() {
         queue.add(7);
         queue.remove();
         assertTrue(queue.isEmpty());
@@ -78,7 +78,7 @@ public class QueueTest {
     }
 
     @Test
-    public void pollReturnsAndRemovesHead() {
+    public void pollReturnsAndRemovesTheFirst() {
         queue.add(7);
         assertEquals(7, queue.poll());
         assertTrue(queue.isEmpty());

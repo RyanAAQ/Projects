@@ -1,4 +1,4 @@
-package dsa;
+package ArrayList;
 
 public class ArrayList {
 
@@ -39,7 +39,7 @@ public class ArrayList {
 
     public int remove(int index) {
         if(index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("The Specified index is out of bounds for the list");
+            throw new IllegalArgumentException("The Specified index is out of bounds for the list");
         }
         int removed = elements[index];
 

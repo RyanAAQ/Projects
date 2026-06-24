@@ -19,6 +19,11 @@ public class ArrayListTest {
     }
 
     @Test
+    public void newListSizeIsZero(){
+        assertEquals(0, list.size());
+    }
+
+    @Test
     public void oneElementIsAddedToTheListWIthASpecifiedIndex() {
         list.add(0, 98);
         assertEquals(1, list.size());
@@ -42,7 +47,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void testGet() {
+    public void getTheElementsAtTheSpecifiedIndex() {
         list.add(0, 98);
         list.add(1, 99);
         list.add(2, 100);
@@ -50,7 +55,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void testGetFirst() {
+    public void getOnlyTheFirstElementInTheList() {
         list.add(0, 98);
         list.add(1, 99);
         list.add(2, 100);
@@ -58,7 +63,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void testGetLast() {
+    public void getOnlyTheLastElemntInTheList() {
         list.add(0, 98);
         list.add(1, 99);
         list.add(2, 100);
