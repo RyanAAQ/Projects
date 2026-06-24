@@ -1,4 +1,4 @@
-package ArrayList;
+package arraylist;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -63,7 +63,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void getOnlyTheLastElemntInTheList() {
+    public void getOnlyTheLastElementInTheList() {
         list.add(0, 98);
         list.add(1, 99);
         list.add(2, 100);
@@ -71,7 +71,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void anExceptionIsThrownWhenTheIndexForTheRemoveMthodIsGreaterThanTheSizeOrLessThanZero(){
+    public void anExceptionIsThrownWhenTheIndexForTheRemoveMethodIsGreaterThanTheSizeOrLessThanZero(){
     list.add(0, 48);
     assertThrows(IllegalArgumentException.class, () -> list.remove(1));
     

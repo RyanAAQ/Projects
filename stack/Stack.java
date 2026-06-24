@@ -1,7 +1,7 @@
-package Stack;
+package stack;
 
 public class Stack {
-    private int[] elements;
+    private final int[] elements;
     private int size;
 
     public Stack() {

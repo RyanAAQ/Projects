@@ -1,4 +1,4 @@
-package Queue;
+package queue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -86,13 +86,13 @@ public class QueueTest {
 
     @Test
     public void addOnFullQueueThrowsException() {
-        for (int i = 0; i < 10; i++) queue.add(i);
+        for (int index = 0; index < 10; index++) queue.add(index);
         assertThrows(IllegalArgumentException.class, () -> queue.add(99));
     }
 
     @Test
     public void offerOnFullQueueReturnsFalse() {
-        for (int i = 0; i < 10; i++) queue.offer(i);
+        for (int index = 0; index < 10; index++) queue.offer(index);
         assertFalse(queue.offer(99));
     }
 

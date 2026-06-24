@@ -1,7 +1,7 @@
-package Queue;
+package queue;
 
 public class Queue {
-    private int[] elements;
+    private final int[] elements;
     private int size;
 
     public Queue() {
