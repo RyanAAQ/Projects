@@ -10,6 +10,11 @@ public class ArrayList {
     }
 
     public void add(int index, int element) {
+
+        if(size == elements.length){
+            resize();
+        }
+
         for(int count = size; count > index; count--){
             elements[count] = elements[count - 1];
         }
