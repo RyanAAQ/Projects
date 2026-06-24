@@ -47,6 +47,14 @@ public class ArrayListTest {
     }
 
     @Test
+    public void twoElementsAreAddedAndOneIsRemovedAndTheSizeIsAccurate(){
+        list.add(98);
+        list.add(34);
+        list.remove(1);
+        assertEquals(1, list.size());
+    }
+
+    @Test
     public void getTheElementsAtTheSpecifiedIndex() {
         list.add(0, 98);
         list.add(1, 99);
