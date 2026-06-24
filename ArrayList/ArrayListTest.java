@@ -1,4 +1,4 @@
-package dsa;
+package ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,6 +64,13 @@ public class ArrayListTest {
         list.add(2, 100);
         assertEquals(100, list.getLast());
     }
+
+    @Test
+    public void anExceptionIsThrownWhenTheIndexForTheRemoveMthodIsGreaterThanTheSizeOrLessThanZero(){
+    list.add(0, 48);
+    assertThrows(IllegalArgumentException.class, () -> list.remove(1));
+    
+}
 
     @Test
     public void anElementIsRemovedFromTheListAndItIsReturned() {

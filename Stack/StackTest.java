@@ -59,8 +59,6 @@ public class StackTest {
         assertEquals(1, stack.pop());
     }
 
-    // assertThrows checks that the code inside the lambda throws the expected exception
-    // if it doesn't throw, the test FAILS
     @Test
     public void popOnEmptyStackThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> stack.pop());

@@ -15,7 +15,6 @@ public class Stack {
     }
 
     public int pop() {
-        // Guard: if empty, throw instead of crashing with ArrayIndexOutOfBoundsException
         if (isEmpty()) {
             throw new IllegalArgumentException("Cannot pop from an empty stack");
         }
