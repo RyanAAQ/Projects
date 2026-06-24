@@ -44,7 +44,7 @@ public class QueueTest {
 
     @Test
     public void elementOnEmptyQueueThrowsException() {
-        assertThrows(java.util.NoSuchElementException.class, () -> queue.element());
+        assertThrows(IllegalArgumentException.class, () -> queue.element());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class QueueTest {
 
     @Test
     public void removeOnEmptyQueueThrowsException() {
-        assertThrows(java.util.NoSuchElementException.class, () -> queue.remove());
+        assertThrows(IllegalArgumentException.class, () -> queue.remove());
     }
 
     @Test
@@ -87,7 +87,7 @@ public class QueueTest {
     @Test
     public void addOnFullQueueThrowsException() {
         for (int i = 0; i < 10; i++) queue.add(i);
-        assertThrows(IllegalStateException.class, () -> queue.add(99));
+        assertThrows(IllegalArgumentException.class, () -> queue.add(99));
     }
 
     @Test

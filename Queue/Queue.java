@@ -11,7 +11,7 @@ public class Queue {
 
     public boolean add(int item) {
         if (size == elements.length) {
-            throw new IllegalStateException("Queue is full");
+            throw new IllegalArgumentException("Queue is full");
         }
         elements[size] = item;
         size++;
@@ -29,21 +29,31 @@ public class Queue {
 
     public int remove() {
         if (isEmpty()) {
-            throw new java.util.NoSuchElementException("Queue is empty");
+            throw new IllegalArgumentException("Cannot be removed because queue is empty");
         }
-        return shift();
+        int first = elements[0];
+        for (int index = 0; index < size - 1; index++) {
+            elements[index] = elements[index + 1];
+        }
+        size--;
+        return first;
     }
 
     public int poll() {
         if (isEmpty()) {
             return -1;
         }
-        return shift();
+        int first = elements[0];
+        for (int index = 0; index < size - 1; index++) {
+            elements[index] = elements[index + 1];
+        }
+        size--;
+        return first;
     }
 
     public int element() {
         if (isEmpty()) {
-            throw new java.util.NoSuchElementException("Queue is empty");
+            throw new IllegalArgumentException("Queue is empty");
         }
         return elements[0];
     }
@@ -61,14 +71,5 @@ public class Queue {
 
     public boolean isEmpty() {
         return size == 0;
-    }
-
-    private int shift() {
-        int front = elements[0];
-        for (int i = 0; i < size - 1; i++) {
-            elements[i] = elements[i + 1];
-        }
-        size--;
-        return front;
     }
 }
