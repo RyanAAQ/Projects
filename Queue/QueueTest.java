@@ -25,47 +25,84 @@ public class QueueTest {
     }
 
     @Test
-    public void afterEnqueueQueueIsNotEmpty() {
-        queue.enqueue(5);
+    public void addIncreasesSize() {
+        queue.add(5);
         assertFalse(queue.isEmpty());
     }
 
     @Test
-    public void peekReturnsFirstItem() {
-        queue.enqueue(10);
+    public void peekOnEmptyQueueReturnsMinusOne() {
+        assertEquals(-1, queue.peek());
+    }
+
+    @Test
+    public void peekReturnsHeadWithoutRemoving() {
+        queue.add(10);
         assertEquals(10, queue.peek());
+        assertEquals(1, queue.size());
     }
 
     @Test
-    public void dequeueReturnsFirstItem() {
-        queue.enqueue(7);
-        assertEquals(7, queue.dequeue());
+    public void elementOnEmptyQueueThrowsException() {
+        assertThrows(java.util.NoSuchElementException.class, () -> queue.element());
     }
 
     @Test
-    public void dequeueRemovesItem() {
-        queue.enqueue(7);
-        queue.dequeue();
+    public void elementReturnsHeadWithoutRemoving() {
+        queue.add(10);
+        assertEquals(10, queue.element());
+        assertEquals(1, queue.size());
+    }
+
+    @Test
+    public void removeOnEmptyQueueThrowsException() {
+        assertThrows(java.util.NoSuchElementException.class, () -> queue.remove());
+    }
+
+    @Test
+    public void removeReturnsHead() {
+        queue.add(7);
+        assertEquals(7, queue.remove());
+    }
+
+    @Test
+    public void removeDeletesHead() {
+        queue.add(7);
+        queue.remove();
         assertTrue(queue.isEmpty());
     }
 
     @Test
-    public void enqueueAndDequeueIsFirstInFirstOut() {
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.enqueue(3);
-        assertEquals(1, queue.dequeue()); // first in, first out
-        assertEquals(2, queue.dequeue());
-        assertEquals(3, queue.dequeue());
+    public void pollOnEmptyQueueReturnsMinusOne() {
+        assertEquals(-1, queue.poll());
     }
 
     @Test
-    public void dequeueOnEmptyQueueThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> queue.dequeue());
+    public void pollReturnsAndRemovesHead() {
+        queue.add(7);
+        assertEquals(7, queue.poll());
+        assertTrue(queue.isEmpty());
     }
 
     @Test
-    public void peekOnEmptyQueueThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> queue.peek());
+    public void addOnFullQueueThrowsException() {
+        for (int i = 0; i < 10; i++) queue.add(i);
+        assertThrows(IllegalStateException.class, () -> queue.add(99));
+    }
+
+    @Test
+    public void offerOnFullQueueReturnsFalse() {
+        for (int i = 0; i < 10; i++) queue.offer(i);
+        assertFalse(queue.offer(99));
+    }
+
+    @Test
+    public void queueIsFirstInFirstOut() {
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+        assertEquals(1, queue.remove());
+        assertEquals(2, queue.remove());
+        assertEquals(3, queue.remove());
     }
 }

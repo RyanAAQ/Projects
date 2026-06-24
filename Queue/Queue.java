@@ -1,40 +1,58 @@
 package Queue;
 
 public class Queue {
-    private int[] data;
+    private int[] elements;
     private int size;
 
     public Queue() {
-        data = new int[10];
+        elements = new int[10];
         size = 0;
     }
 
-    // Add to the back of the queue
-    public void enqueue(int item) {
-        data[size] = item;
+    public boolean add(int item) {
+        if (size == elements.length) {
+            throw new IllegalStateException("Queue is full");
+        }
+        elements[size] = item;
         size++;
+        return true;
     }
 
-    // Remove and return from the front of the queue
-    public int dequeue() {
+    public boolean offer(int item) {
+        if (size == elements.length) {
+            return false;
+        }
+        elements[size] = item;
+        size++;
+        return true;
+    }
+
+    public int remove() {
         if (isEmpty()) {
-            throw new IllegalArgumentException("Cannot dequeue from an empty queue");
+            throw new java.util.NoSuchElementException("Queue is empty");
         }
-        int front = data[0];
-        // Shift everything left by one
-        for (int i = 0; i < size - 1; i++) {
-            data[i] = data[i + 1];
-        }
-        size--;
-        return front;
+        return shift();
     }
 
-    // Return the front item without removing it
+    public int poll() {
+        if (isEmpty()) {
+            return -1;
+        }
+        return shift();
+    }
+
+    public int element() {
+        if (isEmpty()) {
+            throw new java.util.NoSuchElementException("Queue is empty");
+        }
+        return elements[0];
+    }
+
     public int peek() {
         if (isEmpty()) {
-            throw new IllegalArgumentException("Cannot peek at an empty queue");
+            return -1;
         }
-        return data[0];
+        return elements[0];
     }
 
     public int size() {
@@ -43,5 +61,14 @@ public class Queue {
 
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    private int shift() {
+        int front = elements[0];
+        for (int i = 0; i < size - 1; i++) {
+            elements[i] = elements[i + 1];
+        }
+        size--;
+        return front;
     }
 }
