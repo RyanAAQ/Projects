@@ -30,6 +30,17 @@ public class ArrayListTest {
     }
 
     @Test
+    public void theListCanGrowInSizeWhenTheElementsAreIncreased(){
+        list.add(0, 45);
+        list.add(1, 98);
+        list.add(2, 34);
+        list.add(3, 43);
+        list.add(4, 31);
+        list.add(5, 100);
+        assertEquals(6, list.size());
+    }
+
+    @Test
     public void anElementIsAddedWithoutASpecifiedIndexSoItGoesToTheEndOfTheList(){
         list.add(0, 98);
         list.add(1, 87);

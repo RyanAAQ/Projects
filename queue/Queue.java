@@ -1,13 +1,8 @@
 package queue;
 
 public class Queue {
-    private final int[] elements;
+    private final int[] elements = new int[5];
     private int size;
-
-    public Queue() {
-        elements = new int[10];
-        size = 0;
-    }
 
     public boolean add(int item) {
         if (size == elements.length) {

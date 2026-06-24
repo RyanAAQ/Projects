@@ -2,7 +2,7 @@ package arraylist;
 
 public class ArrayList {
 
-    private final int [] elements = new int[100];
+    private int [] elements = new int[5];
     private int size = 0;
 
     public boolean isEmpty(){
@@ -23,6 +23,15 @@ public class ArrayList {
         size++;
     }
 
+    private void resize() {
+        int [] newElements = new int[elements.length * 2];
+
+        for(int count = 0; count < elements.length; count++){
+            newElements[count] = elements[count];
+        }
+        this.elements = newElements;
+    }
+
     public void add(int element){
         elements[size] = element;
         size++;
@@ -31,8 +40,8 @@ public class ArrayList {
         return size;
     }
 
-    public int get(int i) {
-        return elements[i];
+    public int get(int index) {
+        return elements[index];
     }
 
     public int getFirst() {
