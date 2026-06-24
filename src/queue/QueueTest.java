@@ -86,13 +86,17 @@ public class QueueTest {
 
     @Test
     public void addOnFullQueueThrowsException() {
-        for (int index = 0; index < 10; index++) queue.add(index);
+        for (int index = 0; index < 6; index++) {
+            queue.add(index);
+        }
         assertThrows(IllegalArgumentException.class, () -> queue.add(99));
     }
 
     @Test
     public void offerOnFullQueueReturnsFalse() {
-        for (int index = 0; index < 10; index++) queue.offer(index);
+        for (int index = 0; index < 6; index++){
+            queue.offer(index);
+        }
         assertFalse(queue.offer(99));
     }
 
@@ -106,3 +110,5 @@ public class QueueTest {
         assertEquals(3, queue.remove());
     }
 }
+
+
