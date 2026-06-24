@@ -1,0 +1,57 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Run Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            "classPaths": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/out",
+                "${workspaceFolder}/junit-platform-console-standalone-1.11.0.jar"
+            ],
+            "console": "integratedTerminal",
+            "stopOnEntry": false
+        },
+        {
+            "type": "java",
+            "name": "BillCalculatorTest",
+            "request": "launch",
+            "mainClass": "BillCalculatorTest",
+            "classPaths": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/out",
+                "${workspaceFolder}/junit-platform-console-standalone-1.11.0.jar"
+            ],
+            "console": "integratedTerminal",
+            "stopOnEntry": false
+        },
+        {
+            "type": "java",
+            "name": "AccountTest",
+            "request": "launch",
+            "mainClass": "AccountTest",
+            "classPaths": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/out",
+                "${workspaceFolder}/junit-platform-console-standalone-1.11.0.jar"
+            ],
+            "console": "integratedTerminal",
+            "stopOnEntry": false
+        },
+        {
+            "type": "java",
+            "name": "BillCalculator",
+            "request": "launch",
+            "mainClass": "BillCalculator",
+            "classPaths": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/out",
+                "${workspaceFolder}/junit-platform-console-standalone-1.11.0.jar"
+            ],
+            "console": "integratedTerminal",
+            "stopOnEntry": false
+        }
+    ]
+}
