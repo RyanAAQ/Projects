@@ -86,7 +86,7 @@ public class SetTest {
     }
 
     @Test
-    public void addingDupilacatesALotOfTimesDoesNot() {
+    public void addingDuplicatesALotOfTimesDoesNot() {
         for (int count = 0; count < 10; count++) {
             set.add(count);
         }
