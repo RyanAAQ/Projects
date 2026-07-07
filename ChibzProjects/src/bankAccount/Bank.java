@@ -1,6 +1,5 @@
 package bankAccount;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Bank {
@@ -42,7 +41,7 @@ public class Bank {
         accounts.remove(account);
     }
 
-    public void deposit(String accountNumber, BigDecimal amount) {
+    public void deposit(String accountNumber, double amount) {
         Account account = findAccount(accountNumber);
         if (account == null) {
             throw new IllegalArgumentException("Account not found");
@@ -50,7 +49,7 @@ public class Bank {
         account.deposit(amount);
     }
 
-    public void withdraw(String accountNumber, BigDecimal amount, String pin) {
+    public void withdraw(String accountNumber, double amount, String pin) {
         Account account = findAccount(accountNumber);
         if (account == null) {
             throw new IllegalArgumentException("Account not found");
@@ -58,7 +57,7 @@ public class Bank {
         account.withdraw(amount, pin);
     }
 
-    public void transfer(String myAccountNumber, String myGuyAccountNumber, BigDecimal amount, String pin) {
+    public void transfer(String myAccountNumber, String myGuyAccountNumber, double amount, String pin) {
         Account mine = findAccount(myAccountNumber);
         Account myGuy = findAccount(myGuyAccountNumber);
         if (mine == null || myGuy == null) {
@@ -68,7 +67,7 @@ public class Bank {
         myGuy.deposit(amount);
     }
 
-    public BigDecimal checkBalance(String accountNumber, String pin) {
+    public double checkBalance(String accountNumber, String pin) {
         Account account = findAccount(accountNumber);
         if (account == null) {
             throw new IllegalArgumentException("Account not found");

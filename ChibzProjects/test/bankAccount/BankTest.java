@@ -3,8 +3,6 @@ package bankAccount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BankTest {
@@ -25,53 +23,53 @@ public class BankTest {
 
     @Test
     public void newAccountBalanceIsZero() {
-        assertEquals(BigDecimal.ZERO, bank.checkBalance(accountNumber, "1234"));
+        assertEquals(0.0, bank.checkBalance(accountNumber, "1234"));
     }
 
     @Test
     public void depositIncreasesBalance() {
-        bank.deposit(accountNumber, new BigDecimal("1000"));
-        assertEquals(new BigDecimal("1000"), bank.checkBalance(accountNumber, "1234"));
+        bank.deposit(accountNumber, 1000.0);
+        assertEquals(1000.0, bank.checkBalance(accountNumber, "1234"));
     }
 
     @Test
     public void depositToAccountThatDoesNotExistThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> bank.deposit("9999", new BigDecimal("500")));
+        assertThrows(IllegalArgumentException.class, () -> bank.deposit("9999", 500.0));
     }
 
     @Test
     public void withdrawingChangesTheBalance() {
-        bank.deposit(accountNumber, new BigDecimal("500"));
-        bank.withdraw(accountNumber, new BigDecimal("200"), "1234");
-        assertEquals(new BigDecimal("300"), bank.checkBalance(accountNumber, "1234"));
+        bank.deposit(accountNumber, 500.0);
+        bank.withdraw(accountNumber, 200.0, "1234");
+        assertEquals(300.0, bank.checkBalance(accountNumber, "1234"));
     }
 
     @Test
     public void withdrawingWithWrongPinThrowsException() {
-        bank.deposit(accountNumber, new BigDecimal("500"));
-        assertThrows(IllegalArgumentException.class, () -> bank.withdraw(accountNumber, new BigDecimal("200"), "0000"));
+        bank.deposit(accountNumber, 500.0);
+        assertThrows(IllegalArgumentException.class, () -> bank.withdraw(accountNumber, 200.0, "0000"));
     }
 
     @Test
     public void withdrawingMoreThanBalanceThrowsException() {
-        bank.deposit(accountNumber, new BigDecimal("100"));
-        assertThrows(IllegalArgumentException.class, () -> bank.withdraw(accountNumber, new BigDecimal("500"), "1234"));
+        bank.deposit(accountNumber, 100.0);
+        assertThrows(IllegalArgumentException.class, () -> bank.withdraw(accountNumber, 500.0, "1234"));
     }
 
     @Test
     public void transferSendsMoneyBetweenAccounts() {
         Account me = bank.registerCustomer("Ariyo", "Quadri", "5678");
-        bank.deposit(accountNumber, new BigDecimal("1000"));
-        bank.transfer(accountNumber, me.getNumber(), new BigDecimal("400"), "1234");
-        assertEquals(new BigDecimal("600"), bank.checkBalance(accountNumber, "1234"));
-        assertEquals(new BigDecimal("400"), bank.checkBalance(me.getNumber(), "5678"));
+        bank.deposit(accountNumber, 1000.0);
+        bank.transfer(accountNumber, me.getNumber(), 400.0, "1234");
+        assertEquals(600.0, bank.checkBalance(accountNumber, "1234"));
+        assertEquals(400.0, bank.checkBalance(me.getNumber(), "5678"));
     }
 
     @Test
     public void transferWithWrongPinThrowsException() {
         Account second = bank.registerCustomer("John", "Doe", "5678");
-        bank.deposit(accountNumber, new BigDecimal("1000"));
-        assertThrows(IllegalArgumentException.class, () -> bank.transfer(accountNumber, second.getNumber(), new BigDecimal("400"), "0000"));
+        bank.deposit(accountNumber, 1000.0);
+        assertThrows(IllegalArgumentException.class, () -> bank.transfer(accountNumber, second.getNumber(), 400.0, "0000"));
     }
 
     @Test
@@ -93,9 +91,9 @@ public class BankTest {
     @Test
     public void multipleAccountsAreTrackedSeparately() {
         Account bro = bank.registerCustomer("Ariyo", "Quayyum", "4321");
-        bank.deposit(accountNumber, new BigDecimal("500"));
-        bank.deposit(bro.getNumber(), new BigDecimal("300"));
-        assertEquals(new BigDecimal("500"), bank.checkBalance(accountNumber, "1234"));
-        assertEquals(new BigDecimal("300"), bank.checkBalance(bro.getNumber(), "4321"));
+        bank.deposit(accountNumber, 500.0);
+        bank.deposit(bro.getNumber(), 300.0);
+        assertEquals(500.0, bank.checkBalance(accountNumber, "1234"));
+        assertEquals(300.0, bank.checkBalance(bro.getNumber(), "4321"));
     }
 }

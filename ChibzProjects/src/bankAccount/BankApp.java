@@ -1,6 +1,5 @@
 package bankAccount;
 
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class BankApp {
@@ -20,16 +19,17 @@ public class BankApp {
             System.out.println("7. Exit");
             System.out.print("Choose: ");
 
-            String choice = input.nextLine().trim();
+            int choice = input.nextInt();
+            input.nextLine(); // consume newline
 
             switch (choice) {
-                case "1" -> register();
-                case "2" -> deposit();
-                case "3" -> withdraw();
-                case "4" -> transfer();
-                case "5" -> checkBalance();
-                case "6" -> removeAccount();
-                case "7" -> {
+                case 1 -> register();
+                case 2 -> deposit();
+                case 3 -> withdraw();
+                case 4 -> transfer();
+                case 5 -> checkBalance();
+                case 6 -> removeAccount();
+                case 7 -> {
                     System.out.println("Goodbye!");
                     return;
                 }
@@ -59,7 +59,7 @@ public class BankApp {
         String number = input.nextLine().trim();
         System.out.print("Amount: ");
         try {
-            BigDecimal amount = new BigDecimal(input.nextLine().trim());
+            double amount = input.nextDouble();
             bank.deposit(number, amount);
             System.out.println("Deposit successful.");
         } catch (IllegalArgumentException e) {
@@ -71,7 +71,7 @@ public class BankApp {
         System.out.print("Account number: ");
         String number = input.nextLine().trim();
         System.out.print("Amount: ");
-        BigDecimal amount = new BigDecimal(input.nextLine().trim());
+        double amount = input.nextDouble();
         System.out.print("PIN: ");
         String pin = input.nextLine().trim();
 
@@ -89,7 +89,7 @@ public class BankApp {
         System.out.print("Recipient account number: ");
         String receiver = input.nextLine().trim();
         System.out.print("Amount: ");
-        BigDecimal amount = new BigDecimal(input.nextLine().trim());
+        double amount = input.nextDouble();
         System.out.print("PIN: ");
         String pin = input.nextLine().trim();
 
@@ -108,7 +108,7 @@ public class BankApp {
         String pin = input.nextLine().trim();
 
         try {
-            BigDecimal balance = bank.checkBalance(number, pin);
+            double balance = bank.checkBalance(number, pin);
             System.out.println("Balance: " + balance);
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());

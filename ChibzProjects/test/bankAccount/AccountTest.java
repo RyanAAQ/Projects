@@ -3,8 +3,6 @@ package bankAccount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AccountTest {
@@ -28,61 +26,61 @@ public class AccountTest {
 
     @Test
     public void newAccountBalanceIsZero() {
-        assertEquals(BigDecimal.ZERO, account.getBalance());
+        assertEquals(0.0, account.getBalance());
     }
 
     @Test
     public void depositingIncreasesBalance() {
-        account.deposit(new BigDecimal("1000"));
-        assertEquals(new BigDecimal("1000"), account.getBalance());
+        account.deposit(1000.0);
+        assertEquals(1000.0, account.getBalance());
     }
 
     @Test
     public void depositingWithNegativeAmountThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> account.deposit(new BigDecimal("-100")));
+        assertThrows(IllegalArgumentException.class, () -> account.deposit(-100.0));
     }
 
     @Test
     public void depositWithZeroAmountThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> account.deposit(BigDecimal.ZERO));
+        assertThrows(IllegalArgumentException.class, () -> account.deposit(0.0));
     }
 
     @Test
     public void moneyIsAddedWhenDepositing() {
-        account.deposit(new BigDecimal("100"));
-        account.deposit(new BigDecimal("200"));
-        assertEquals(new BigDecimal("300"), account.getBalance());
+        account.deposit(100.0);
+        account.deposit(200.0);
+        assertEquals(300.0, account.getBalance());
     }
 
     @Test
     public void withdrawingReducesTheBalance() {
-        account.deposit(new BigDecimal("500"));
-        account.withdraw(new BigDecimal("200"), "1234");
-        assertEquals(new BigDecimal("300"), account.getBalance());
+        account.deposit(500.0);
+        account.withdraw(200.0, "1234");
+        assertEquals(300.0, account.getBalance());
     }
 
     @Test
     public void withdrawingWithIncorrectPinThrowsException() {
-        account.deposit(new BigDecimal("500"));
-        assertThrows(IllegalArgumentException.class, () -> account.withdraw(new BigDecimal("100"), "9999"));
+        account.deposit(500.0);
+        assertThrows(IllegalArgumentException.class, () -> account.withdraw(100.0, "9999"));
     }
 
     @Test
     public void withdrawingMoreThanBalanceThrowsException() {
-        account.deposit(new BigDecimal("100"));
-        assertThrows(IllegalArgumentException.class, () -> account.withdraw(new BigDecimal("500"), "1234"));
+        account.deposit(100.0);
+        assertThrows(IllegalArgumentException.class, () -> account.withdraw(500.0, "1234"));
     }
 
     @Test
     public void withdrawingNegativeAmountThrowsException() {
-        account.deposit(new BigDecimal("200"));
-        assertThrows(IllegalArgumentException.class, () -> account.withdraw(new BigDecimal("-50"), "1234"));
+        account.deposit(200.0);
+        assertThrows(IllegalArgumentException.class, () -> account.withdraw(-50.0, "1234"));
     }
 
     @Test
     public void withdrawingZeroAmountThrowsException() {
-        account.deposit(new BigDecimal("200"));
-        assertThrows(IllegalArgumentException.class, () -> account.withdraw(BigDecimal.ZERO, "1234"));
+        account.deposit(200.0);
+        assertThrows(IllegalArgumentException.class, () -> account.withdraw(0.0, "1234"));
     }
 
     @Test
@@ -92,8 +90,8 @@ public class AccountTest {
 
     @Test
     public void depositAndWithdrawWorkCorrectly() {
-        account.deposit(new BigDecimal("1000"));
-        account.withdraw(new BigDecimal("400"), "1234");
-        assertEquals(new BigDecimal("600"), account.getBalance());
+        account.deposit(1000.0);
+        account.withdraw(400.0, "1234");
+        assertEquals(600.0, account.getBalance());
     }
 }
