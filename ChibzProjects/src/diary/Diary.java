@@ -33,7 +33,7 @@ public class Diary {
     }
 
     public void createEntry(String title, String body) {
-        if (isLocked) throw new IllegalArgumentException("Diary is locked");
+        if (isLocked) throw new IllegalStateException("Diary is locked");
         entries.add(new Entry(entryId++, title, body));
     }
 

@@ -106,6 +106,16 @@ class DiaryTest {
     }
 
     @Test
+    void updateEntryChangesTheEntryInTheDiary() {
+        diary.unlockDiary("abcdefg");
+        diary.createEntry("Original Title", "Original Body");
+        Entry entry = diary.getEntries().get(0);
+        entry.setTitle("Nigeerrr Title");
+        entry.setBody("Todays date is what");
+        assertEquals("Nigeerrr Title", entry.getTitle());
+    }
+
+    @Test
     void multiplEntriesAreTrackedCorrectly() {
         diary.unlockDiary("abcdefg");
         diary.createEntry("Entry 1", "Body 1");

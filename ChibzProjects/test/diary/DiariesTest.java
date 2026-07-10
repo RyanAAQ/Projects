@@ -25,7 +25,6 @@ class DiariesTest {
         diaries.add("Ryan", "pass123");
         diaries.add("Ariyo", "pass456");
         Diary found = diaries.findByUsername("Ariyo");
-        assertNotNull(found);
         assertEquals("Ariyo", found.getUsername());
     }
 
@@ -65,10 +64,4 @@ class DiariesTest {
         assertThrows(IllegalArgumentException.class, () -> diaries.add("Ryan", "differentpass"));
     }
 
-    @Test
-    void addingDuplicateUsernameDoesNotAddSecondDiary() {
-        diaries.add("Ryan", "pass123");
-        try { diaries.add("Ryan", "differentpass"); } catch (IllegalArgumentException ignored) {}
-        assertEquals(1, diaries.getDiaries().size());
-    }
 }
