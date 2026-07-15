@@ -1,4 +1,4 @@
-package arraylist;
+package dsa.arraylist;
 
 public class ArrayList {
 

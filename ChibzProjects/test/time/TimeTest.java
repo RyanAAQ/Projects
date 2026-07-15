@@ -1,8 +1,6 @@
 package time;
 
-import org.junit.jupiter.Test;
-
-import java.sql.Time;
+import org.junit.jupiter.api.Test;
 
 import static java.lang.System.out;
 

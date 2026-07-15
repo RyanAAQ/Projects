@@ -49,7 +49,7 @@ public class DiaryMain {
         String username = input.nextLine().strip();
         Diary diary = diaries.findByUsername(username);
         if (diary == null) {
-            print("Username not found.");
+            print("Username not found.\n");
             return;
         }
         print("Enter your password");
@@ -95,7 +95,7 @@ public class DiaryMain {
             print("Enter Entry Body");
             String description = input.nextLine().strip();
             diary.updateEntry(id, title, description);
-            print("You Have Successfully Updated The Entry.");
+            print("You Have Successfully Updated The Entry.\n");
         }
         catch (IllegalArgumentException e){
             print(e.getMessage());
@@ -132,7 +132,7 @@ public class DiaryMain {
         print("Body: ");
         String body = input.nextLine().strip();
         diary.createEntry(title, body);
-        print("Entry has been created.");
+        print("Entry has been created.\n");
     }
 
     private static void removeDiary() {
@@ -146,7 +146,7 @@ public class DiaryMain {
         String password = input.nextLine().strip();
         try {
             diaries.delete(name, password);
-            out.println("Successfully removed diary.");
+            out.println("Successfully removed diary.\n");
         }
         catch (IllegalArgumentException e){
             print(e.getMessage());
@@ -160,7 +160,7 @@ public class DiaryMain {
         String password = input.nextLine().strip();
         try {
             diaries.add(username, password);
-            print("Successfully added diary.");
+            print("Successfully added diary.\n");
         }
         catch (IllegalArgumentException e) {
             print(e.getMessage());

@@ -1,8 +1,9 @@
-package set;
+package dsa.set;
+import dsa.arraylist.ArrayList;
 
 public class Set {
 
-    private int[] elements = new int[10];
+    int [] elements = new int[10];
     private int size = 0;
 
     public int size() {

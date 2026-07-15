@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Bank")
 public class BankTest {
 
     private Bank bank;
@@ -71,8 +70,7 @@ public class BankTest {
 
     @Test
     public void withdrawFromNonExistentAccountThrowsException() {
-        assertThrows(IllegalArgumentException.class,
-                () -> bank.withdraw("9999", 100.0, "1234"));
+        assertThrows(IllegalArgumentException.class, () -> bank.withdraw("9999", 100.0, "1234"));
     }
 
     @Test

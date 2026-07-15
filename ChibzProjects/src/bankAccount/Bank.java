@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Bank {
     private String name;
     private ArrayList<Account> accounts = new ArrayList<>();
-    private int nextAccountNumber = 1001;
+    private int nextAccountNumber = 1000;
 
     public Bank(String name) {
         this.name = name;

@@ -1,7 +1,7 @@
-package queue;
+package dsa.queue;
 
 public class Queue {
-    private final int[] elements = new int[5];
+    private final int[] elements = new int[6];
     private int size;
 
     public boolean add(int item) {

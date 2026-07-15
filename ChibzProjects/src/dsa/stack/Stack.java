@@ -1,4 +1,4 @@
-package stack;
+package dsa.stack;
 
 public class Stack {
     private final int[] elements;

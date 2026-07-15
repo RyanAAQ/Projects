@@ -1,4 +1,4 @@
-package queue;
+package dsa.queue;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,4 @@
-package map;
+package dsa.map;
 
 public class Map {
 
